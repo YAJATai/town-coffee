@@ -1,44 +1,103 @@
-import { Coffee, Cake, Leaf, Award } from "lucide-react";
-
 const features = [
   {
-    icon: Coffee,
     title: "Premium Arabic Coffee",
-    desc: "Hand-selected beans roasted to perfection",
+    icon: "fa-mug-saucer",
   },
   {
-    icon: Cake,
     title: "Fresh Daily Cakes",
-    desc: "Baked fresh every morning with love",
+    icon: "fa-cake-candles",
   },
   {
-    icon: Leaf,
     title: "Natural Ingredients",
-    desc: "Only the finest natural ingredients",
+    icon: "fa-leaf",
   },
   {
-    icon: Award,
     title: "Premium Quality",
-    desc: "Consistent excellence in every cup",
+    icon: "fa-award",
   },
 ];
 
 export default function Features() {
   return (
-    <section className="border-y border-white/10 bg-black/40 py-16 md:py-20">
-      <div className="container-page">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {features.map((f) => (
-            <div key={f.title} className="text-center">
-              <div className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-full bg-accent/10">
-                <f.icon className="h-6 w-6 text-accent" />
-              </div>
-              <h3 className="font-serif text-lg font-medium">{f.title}</h3>
-              <p className="mt-1 text-sm text-muted">{f.desc}</p>
+    <section
+      style={{
+        background: "#f7fbf3",
+        display: "flex",
+        flexDirection: "row",
+        gap: "30px",
+        padding: "40px 50px",
+      }}
+    >
+      <div
+        style={{
+          flex: "0 0 70%",
+          display: "flex",
+          gap: "20px",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}
+        className="features-grid"
+      >
+        {features.map((f) => (
+          <div
+            key={f.title}
+            style={{
+              flex: 1,
+              textAlign: "center",
+            }}
+          >
+            <div
+              style={{
+                width: "60px",
+                height: "60px",
+                borderRadius: "50%",
+                background: "#e6f1d8a9",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                margin: "0 auto 12px",
+                color: "#14453d",
+                fontSize: "28px",
+              }}
+            >
+              <i className={`fa-solid ${f.icon}`} />
             </div>
-          ))}
-        </div>
+            <p style={{ color: "#333", fontSize: "16px", fontWeight: 500 }}>{f.title}</p>
+          </div>
+        ))}
       </div>
+
+      <div
+        style={{
+          flex: "0 0 30%",
+          background: "#182419",
+          minHeight: "100px",
+        }}
+        className="features-panel"
+      />
+
+      <style>{`
+        @media (max-width: 768px) {
+          .features-grid {
+            flex-direction: column !important;
+            flex: 1 !important;
+          }
+          .features-grid > div {
+            background: #e6f1d84d;
+            border-radius: 12px;
+            padding: 20px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            text-align: left !important;
+          }
+          .features-grid > div > div {
+            margin: 0 !important;
+            flex-shrink: 0;
+          }
+          .features-panel { display: none !important; }
+        }
+      `}</style>
     </section>
   );
 }
